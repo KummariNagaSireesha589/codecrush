@@ -592,7 +592,7 @@
             gap: 3px;
         }
         
-        /* Questions Content Area - FIXED TO SHOW QUESTIONS */
+        /* Questions Content Area */
         .questions-content {
             flex: 1;
             padding: 40px;
@@ -693,28 +693,25 @@
             font-size: 1.1rem;
         }
         
-        /* Questions Container - FIXED DISPLAY */
+        /* Questions Container - FIXED TO SHOW QUESTIONS */
         .questions-container {
             flex: 1;
             z-index: 1;
             position: relative;
-            display: block !important;
-            opacity: 1 !important;
-            visibility: visible !important;
         }
         
         .question-set {
-            display: block !important;
-            animation: fadeIn 0.5s ease;
+            display: none;
+            animation: slideInRight 0.5s ease;
         }
         
         .question-set.active {
-            display: block !important;
+            display: block !important; /* Force display when active */
         }
         
         @keyframes slideInRight {
             from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            to { opacity: 1; transform: translateX(0); }
         }
         
         .question-card {
@@ -726,9 +723,6 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
-            display: block !important;
-            opacity: 1 !important;
-            visibility: visible !important;
         }
         
         .question-card:hover {
@@ -912,7 +906,7 @@
         
         /* Submit Button - HIDDEN */
         .submit-container {
-            display: none !important;
+            display: none !important; /* Hide submit button */
             margin-top: 40px;
             padding-top: 25px;
             border-top: 1px solid rgba(56, 189, 248, 0.1);
@@ -923,6 +917,7 @@
         }
         
         .submit-btn {
+            display: none !important; /* Hide submit button */
             background: linear-gradient(to right, #38bdf8, #818cf8);
             color: #0f172a;
             border: none;
@@ -1310,8 +1305,8 @@
     <main class="container">
         <!-- Home Section -->
         <section id="home" class="content-section active">
-            <div class="poster-container">
-                <!-- <h1 class="event-title">CodeCrush 2026</h1>
+            <!-- <div class="poster-container">
+                <h1 class="event-title">CodeCrush 2026</h1>
                 <p class="event-subtitle">The Ultimate Python Challenge</p> -->
                 
                 <!-- <div class="event-details-grid">
@@ -1338,9 +1333,9 @@
                         <h3>Prize Pool</h3>
                         <p>$10,000 Cash & Tech Gadgets</p>
                     </div>
-                </div> -->
+                </div>
                 
-                <!-- <div class="event-highlights">
+                <div class="event-highlights">
                     <div class="highlight">
                         <i class="fab fa-python"></i>
                         <h3>Python Only</h3>
@@ -1356,23 +1351,21 @@
                         <h3>Certificates</h3>
                         <p>All participants receive participation certificates</p>
                     </div>
-                </div> -->
+                </div>
                 
-                <!-- <div style="font-size: 1rem; margin-top: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: #cbd5e1;">
+                <div style="font-size: 1rem; margin-top: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: #cbd5e1;">
                     <p>CodeCrush is the premier Python coding competition that challenges programmers of all skill levels. Start with Python fundamentals in Level 1, then progress to advanced topics. Register now to secure your spot!</p>
                 </div> -->
-                
-                <div style="margin: 1.5rem 0; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);">
+                 <div style="margin: 1.5rem 0; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);">
                     <img src="Blue and Black Modern Brand Marketing Presentation-2_page-0001.jpg" 
                          alt="CodeCrush 2026 Poster" 
                          style="width: 100%; height: auto; display: block; border: 1px solid rgba(56, 189, 248, 0.2);">
                 </div>
-                
-                <div style="text-align: center; margin-top: 1.5rem;">
+             <div style="text-align: center; margin-top: 1.5rem;">
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSdZ-TU9CfWhTUWqa4biwCUCuZlVYmQfCLfFONsrsydyD69huQ/viewform?usp=sharing&ouid=102850845596703448837" target="_blank" class="cta-button" style="font-size: 1.2rem; padding: 16px 40px; text-decoration: none; display: inline-block;">
-                        <i class="fas fa-user-plus"></i>
-                        Register Now for CodeCrush 2026
-                    </a>
+    <i class="fas fa-user-plus"></i>
+    Register Now for CodeCrush 2026
+</a>
                 </div>
             </div>
             
@@ -1438,7 +1431,7 @@
             </div>
         </section>
         
-        <!-- Enhanced Levels Page with Questions - FIXED TO SHOW QUESTIONS -->
+        <!-- Enhanced Levels Page with Questions - KEEPING ORIGINAL SIZES -->
         <section id="levels" class="content-section">
             <h1>CodeCrush Levels</h1>
             <p>Test your Python skills across three challenging levels with increasing difficulty</p>
@@ -1496,7 +1489,7 @@
                 
                 <div class="questions-content">
                     <!-- Level 1: Python Fundamentals - 20 Questions, 45 minutes -->
-                    <div class="question-set active" id="level1-questions" style="display: block; opacity: 1; visibility: visible;">
+                    <div class="question-set active" id="level1-questions">
                         <div class="level-header">
                             <h2 class="level-title">Python Fundamentals</h2>
                             <div class="level-stats">
@@ -1525,11 +1518,16 @@
                             <!-- Questions will be dynamically added here -->
                         </div>
                         
-                        <!-- Submit button removed -->
+                        <div class="submit-container">
+                            <button class="submit-btn" data-level="1">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Level 1
+                            </button>
+                        </div>
                     </div>
                     
                     <!-- Level 2: Intermediate Python - 4 Questions, 55 minutes -->
-                    <div class="question-set" id="level2-questions" style="display: block; opacity: 1; visibility: visible;">
+                    <div class="question-set" id="level2-questions">
                         <div class="level-header">
                             <h2 class="level-title">Intermediate Python</h2>
                             <div class="level-stats">
@@ -1558,11 +1556,16 @@
                             <!-- Questions will be dynamically added here -->
                         </div>
                         
-                        <!-- Submit button removed -->
+                        <div class="submit-container">
+                            <button class="submit-btn" data-level="2">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Level 2
+                            </button>
+                        </div>
                     </div>
                     
                     <!-- Level 3: Advanced Python - 3 Questions, 90 minutes -->
-                    <div class="question-set" id="level3-questions" style="display: block; opacity: 1; visibility: visible;">
+                    <div class="question-set" id="level3-questions">
                         <div class="level-header">
                             <h2 class="level-title">Advanced Python</h2>
                             <div class="level-stats">
@@ -1591,7 +1594,12 @@
                             <!-- Questions will be dynamically added here -->
                         </div>
                         
-                        <!-- Submit button removed -->
+                        <div class="submit-container">
+                            <button class="submit-btn" data-level="3">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Level 3
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1614,8 +1622,9 @@
                     <div class="contact-card">
                         <h3><i class="fas fa-phone"></i> Phone Support</h3>
                         <p>For urgent issues that require immediate attention during competition hours:</p>
-                        <p><strong>Phone:</strong> +91-9059064469 CODE-CRUSH</p>
-                        <p><strong>Hours:</strong>11:30AM-3:30PM</p>
+                        <p><strong>Phone no1:</strong> +91-9059064469</p>
+                        <p><strong>Phone no2:</strong> +91-9014233937</p>
+                        <!-- <p><strong>Hours:</strong>11:30AM-3:30PM</p> -->
                     </div>
                     
                     <div class="contact-card">
@@ -1716,9 +1725,9 @@
                 
                 // If switching to levels tab, make sure questions are visible
                 if (targetId === 'levels') {
+                    // Make sure Level 1 is active
                     setTimeout(() => {
-                        renderQuestions(1);
-                        updateAnsweredCounter(1);
+                        switchLevel(1);
                     }, 100);
                 }
             });
@@ -1732,56 +1741,40 @@
                 // Get target level
                 const targetLevel = this.getAttribute('data-level');
                 
-                // Update active level link
-                document.querySelectorAll('.level-link').forEach(item => {
-                    item.classList.remove('active');
-                });
-                this.classList.add('active');
-                
-                // Show target level questions
-                document.querySelectorAll('.question-set').forEach(set => {
-                    set.classList.remove('active');
-                });
-                document.getElementById(`${targetLevel}-questions`).classList.add('active');
-                
-                // Render questions for this level
+                // Switch to the level
                 const levelNum = targetLevel.replace('level', '');
-                renderQuestions(parseInt(levelNum));
+                switchLevel(parseInt(levelNum));
             });
         });
         
-        // Function to ensure questions are visible
-        function makeQuestionsVisible() {
-            // Remove any hiding styles
+        // Function to switch between levels
+        function switchLevel(level) {
+            console.log(`Switching to level ${level}`);
+            
+            // Update active level link
+            document.querySelectorAll('.level-link').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`.level-link[data-level="level${level}"]`).classList.add('active');
+            
+            // Hide all question sets
             document.querySelectorAll('.question-set').forEach(set => {
-                set.style.display = 'block';
-                set.style.opacity = '1';
-                set.style.visibility = 'visible';
+                set.classList.remove('active');
+                set.style.display = 'none';
             });
             
-            document.querySelectorAll('.questions-container').forEach(container => {
-                container.style.display = 'block';
-                container.style.opacity = '1';
-                container.style.visibility = 'visible';
-            });
+            // Show target level questions
+            const targetSet = document.getElementById(`level${level}-questions`);
+            if (targetSet) {
+                targetSet.classList.add('active');
+                targetSet.style.display = 'block';
+                
+                // Force reflow to trigger animation
+                targetSet.offsetHeight;
+            }
             
-            document.querySelectorAll('.question-card').forEach(card => {
-                card.style.display = 'block';
-                card.style.opacity = '1';
-                card.style.visibility = 'visible';
-            });
-            
-            document.querySelectorAll('.options-container').forEach(container => {
-                container.style.display = 'grid';
-                container.style.opacity = '1';
-                container.style.visibility = 'visible';
-            });
-            
-            document.querySelectorAll('.option').forEach(option => {
-                option.style.display = 'flex';
-                option.style.opacity = '1';
-                option.style.visibility = 'visible';
-            });
+            // Render questions for this level
+            renderQuestions(level);
         }
         
         // Question data for CodeCrush competition with ONLY Python questions in Level 1
@@ -2082,10 +2075,10 @@
                         question: "Explain the difference between list and tuple in Python.",
                         code: "",
                         options: [
-                            "Lists are mutable and use [], tuples are immutable and use ()",
-                            "Both are the same in Python",
-                            "Lists are faster than tuples",
-                            "Tuples can only contain integers"
+                            // "Lists are mutable and use [], tuples are immutable and use ()",
+                            // "Both are the same in Python",
+                            // "Lists are faster than tuples",
+                            // "Tuples can only contain integers"
                         ],
                         correct: 0,
                         marks: 5,
@@ -2095,10 +2088,10 @@
                         question: "What is a decorator in Python and how is it used?",
                         code: "",
                         options: [
-                            "A function that modifies the behavior of another function using @ syntax",
-                            "A special variable type",
-                            "A loop optimization technique",
-                            "A memory management tool"
+                            // "A function that modifies the behavior of another function using @ syntax",
+                            // "A special variable type",
+                            // "A loop optimization technique",
+                            // "A memory management tool"
                         ],
                         correct: 0,
                         marks: 5,
@@ -2108,10 +2101,10 @@
                         question: "Explain the Global Interpreter Lock (GIL) in Python.",
                         code: "",
                         options: [
-                            "A mutex that allows only one thread to execute Python bytecode at a time",
-                            "A garbage collection mechanism",
-                            "A security feature for Python modules",
-                            "A type of Python list"
+                            // "A mutex that allows only one thread to execute Python bytecode at a time",
+                            // "A garbage collection mechanism",
+                            // "A security feature for Python modules",
+                            // "A type of Python list"
                         ],
                         correct: 0,
                         marks: 5,
@@ -2121,10 +2114,10 @@
                         question: "What are context managers in Python and how do they work?",
                         code: "",
                         options: [
-                            "Handle resource setup/teardown using with statement and __enter__/__exit__ methods",
-                            "Manage Python package dependencies",
-                            "Control variable scope in functions",
-                            "Optimize Python code execution"
+                            // "Handle resource setup/teardown using with statement and __enter__/__exit__ methods",
+                            // "Manage Python package dependencies",
+                            // "Control variable scope in functions",
+                            // "Optimize Python code execution"
                         ],
                         correct: 0,
                         marks: 5,
@@ -2141,10 +2134,10 @@
                         question: "A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers. Given a string s, return true if it is a palindrome, or false otherwise. (10 marks)",
                         code: "def isPalindrome(s):\n    # Your implementation here\n    pass",
                         options: [
-                            "Use two pointers after cleaning the string",
-                            "Reverse the string and compare",
-                            "Use regex to check palindrome",
-                            "Convert to list and use pop()"
+                            // "Use two pointers after cleaning the string",
+                            // "Reverse the string and compare",
+                            // "Use regex to check palindrome",
+                            // "Convert to list and use pop()"
                         ],
                         correct: 0,
                         marks: 10,
@@ -2154,10 +2147,10 @@
                         question: "Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k. A subarray is a contiguous non-empty sequence of elements within an array. (20 marks)",
                         code: "def subarraySum(nums, k):\n    # Your implementation here\n    pass",
                         options: [
-                            "Use prefix sum with hashmap for O(n) solution",
-                            "Use nested loops for O(n²) solution",
-                            "Sort the array first",
-                            "Use sliding window with two pointers"
+                            // "Use prefix sum with hashmap for O(n) solution",
+                            // "Use nested loops for O(n²) solution",
+                            // "Sort the array first",
+                            // "Use sliding window with two pointers"
                         ],
                         correct: 0,
                         marks: 20,
@@ -2167,10 +2160,10 @@
                         question: "Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer. You must write an algorithm that runs in O(n) time and without using the division operation. (30 marks)",
                         code: "def productExceptSelf(nums):\n    # Your implementation here\n    pass",
                         options: [
-                            "Use prefix and suffix product arrays",
-                            "Use division despite restrictions",
-                            "Use nested loops",
-                            "Use recursion with memoization"
+                            // "Use prefix and suffix product arrays",
+                            // "Use division despite restrictions",
+                            // "Use nested loops",
+                            // "Use recursion with memoization"
                         ],
                         correct: 0,
                         marks: 30,
@@ -2247,11 +2240,6 @@
                 
                 container.appendChild(questionCard);
                 
-                // Force display styles
-                questionCard.style.display = 'block';
-                questionCard.style.opacity = '1';
-                questionCard.style.visibility = 'visible';
-                
                 // Add click event to options if they exist
                 if (q.options && q.options.length > 0) {
                     questionCard.querySelectorAll('.option').forEach(opt => {
@@ -2273,9 +2261,6 @@
             
             // Initialize answered counter
             updateAnsweredCounter(level);
-            
-            // Make everything visible
-            makeQuestionsVisible();
         }
         
         // Update answered counter for a level
@@ -2308,40 +2293,90 @@
             }
         }
         
-        // Function to switch between levels
-        function switchLevel(level) {
-            // Update active tab
-            document.querySelectorAll('.level-link').forEach(link => {
-                link.classList.remove('active');
+        // Function to submit answers for a level
+        function submitLevel(level) {
+            const questions = codecrushQuestions[`level${level}`].questions;
+            let answered = 0;
+            let correct = 0;
+            let totalMarks = 0;
+            let earnedMarks = 0;
+            
+            // Get all question cards for this level
+            const questionCards = document.querySelectorAll(`#level${level}-questions .question-card`);
+            
+            questionCards.forEach((card, index) => {
+                const selectedOption = card.querySelector('.option.selected');
+                totalMarks += questions[index].marks;
+                
+                if (selectedOption) {
+                    answered++;
+                    const selectedIndex = parseInt(selectedOption.dataset.optionIndex);
+                    
+                    if (selectedIndex === questions[index].correct) {
+                        correct++;
+                        earnedMarks += questions[index].marks;
+                        selectedOption.style.borderColor = '#10b981';
+                        selectedOption.style.background = 'rgba(16, 185, 129, 0.2)';
+                        
+                        // Add checkmark
+                        selectedOption.innerHTML += '<i class="fas fa-check" style="margin-left: 10px; color: #10b981;"></i>';
+                    } else {
+                        selectedOption.style.borderColor = '#ef4444';
+                        selectedOption.style.background = 'rgba(239, 68, 68, 0.2)';
+                        
+                        // Add cross
+                        selectedOption.innerHTML += '<i class="fas fa-times" style="margin-left: 10px; color: #ef4444;"></i>';
+                        
+                        // Show correct answer
+                        const correctOption = card.querySelector(`.option[data-option-index="${questions[index].correct}"]`);
+                        if (correctOption) {
+                            correctOption.style.borderColor = '#10b981';
+                            correctOption.style.background = 'rgba(16, 185, 129, 0.1)';
+                            correctOption.innerHTML += '<i class="fas fa-check" style="margin-left: 10px; color: #10b981;"></i>';
+                        }
+                    }
+                    
+                    // Show explanation
+                    if (questions[index].explanation) {
+                        const explanationDiv = document.createElement('div');
+                        explanationDiv.className = 'explanation';
+                        explanationDiv.innerHTML = `
+                            <strong>📌 Explanation:</strong> 
+                            <span style="color: #cbd5e1;">${questions[index].explanation}</span>
+                        `;
+                        card.appendChild(explanationDiv);
+                    }
+                }
             });
-            const targetLink = document.querySelector(`.level-link[data-level="level${level}"]`);
-            if (targetLink) {
-                targetLink.classList.add('active');
+            
+            const scorePercentage = totalMarks > 0 ? Math.round((earnedMarks / totalMarks) * 100) : 0;
+            const levelNames = ['Python Fundamentals', 'Intermediate Python', 'Advanced Python'];
+            const levelName = levelNames[level - 1];
+            
+            // Show results
+            const resultMessage = `🎉 ${levelName} Level Submitted!\n\n📊 Your Score: ${earnedMarks}/${totalMarks} (${scorePercentage}%)\n✅ Correct: ${correct}/${questions.length}\n📝 Answered: ${answered}/${questions.length}\n\n${scorePercentage >= 70 ? '🎯 Excellent! You qualify for the next level!' : 'Keep practicing! You need 70% to unlock the next level.'}`;
+            
+            alert(resultMessage);
+            
+            // If score is 70% or above and not the last level, suggest next level
+            if (scorePercentage >= 70 && level < 3) {
+                setTimeout(() => {
+                    if (confirm(`Congratulations! You've unlocked the ${levelNames[level]} level! Would you like to proceed?`)) {
+                        switchLevel(level + 1);
+                    }
+                }, 500);
             }
-            
-            // Update active question set
-            document.querySelectorAll('.question-set').forEach(set => {
-                set.classList.remove('active');
-            });
-            const targetSet = document.getElementById(`level${level}-questions`);
-            if (targetSet) {
-                targetSet.classList.add('active');
-            }
-            
-            // Render questions for this level
-            renderQuestions(level);
-            
-            // Make everything visible
-            makeQuestionsVisible();
         }
         
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
-            // Force display of all question sections
-            document.querySelectorAll('.question-set').forEach(set => {
-                set.style.display = 'block';
-                set.style.opacity = '1';
-                set.style.visibility = 'visible';
+            // Hide submit buttons and containers
+            document.querySelectorAll('.submit-btn').forEach(btn => {
+                btn.style.display = 'none';
+            });
+            
+            document.querySelectorAll('.submit-container').forEach(container => {
+                container.style.display = 'none';
             });
             
             // Render questions for level 1 initially
@@ -2356,16 +2391,6 @@
                 });
             });
             
-            // Remove submit button functionality
-            document.querySelectorAll('.submit-btn').forEach(btn => {
-                btn.style.display = 'none';
-            });
-            
-            // Hide submit containers
-            document.querySelectorAll('.submit-container').forEach(container => {
-                container.style.display = 'none';
-            });
-            
             // Add animation to social icons on hover
             document.querySelectorAll('.social-icon').forEach(icon => {
                 icon.addEventListener('mouseenter', function() {
@@ -2377,10 +2402,13 @@
                 });
             });
             
-            // Force visibility of questions when page loads
+            // Ensure Level 1 is visible on initial load
             setTimeout(() => {
-                makeQuestionsVisible();
-            }, 500);
+                const level1Set = document.getElementById('level1-questions');
+                if (level1Set) {
+                    level1Set.style.display = 'block';
+                }
+            }, 100);
         });
     </script>
 </body>
